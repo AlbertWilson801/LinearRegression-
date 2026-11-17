@@ -1,0 +1,99 @@
+---
+title: "linear-regression"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{linear-regression}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(LinearRegression)
+```
+
+#Introduction
+
+The LinearRegression package provides funcions for fitting and summarizing
+linear regression models. This package uses ordinary least squares (OLS)
+to estimate the coefficients, intercept, and the outcomes of a linear model.
+
+Included in this package are the following three main functions:
+simple_lm(): Fits a simple linear regression model
+predict,simple_lm(): Generates predictions using a fitted model
+summary.simple_lm(): Summarizes the statistics of a fitted model such as
+coefficients, the intercept, R-squared, adjusted R-squared, residuals, and degrees of freedom.
+
+This vignette gives a tutorial on how to use these functions
+with an example datasets and compares the results with R's built-in 
+'lm()' function.
+
+```{r}
+#Create example data
+x<- c(1, 2, 3, 4, 5)
+y<- c(3, 5, 8, 8, 12)
+
+data<-data.frame(x, y)
+
+data
+```
+
+#Fitting a Linear Regression Model
+
+We can use the 'simple_lm()' function to fit a simple
+linear regression model using our example dataset.
+
+```{r}
+model<- simple_lm(x,y)
+model
+```
+
+#Generating Predictions
+
+We use the 'predict.simple_lm()' function to generate predicted
+outcomes using our fitted linear regression model.
+
+```{r}
+predictions<- predict(model, newdata = x)
+prediction_data<- data.frame( x =x,
+                              y = predictions)
+prediction_data
+```
+
+#Summary
+
+The 'summary.simple_lm()' function provides additional information
+about the fitted regression model, including the estimated coefficients,
+residual standard error, R-squared, adjusted R-squatred and degrees of
+freedom
+
+```{r}
+model_summary <- summary(model)
+
+model_summary
+```
+
+#Comparing with R's Built-in Linear Regression Function
+
+We can comparing the results of our 'simple_lm()' function
+with R's built-in 'lm()' function to verify that both functions
+produce equivalent results. 
+
+```{r}
+linear_model <- lm(y ~ x, data = data)
+
+all.equal(
+  unname(model$intercept),
+  unname(coef(linear_model)[1]))
+
+all.equal(
+  unname(model$slope),
+  unname(coef(linear_model)[2])
+)
+```
