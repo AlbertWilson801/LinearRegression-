@@ -44,7 +44,7 @@ data<-data.frame(x, y)
 data
 ```
 
-#Fitting a Linear Regression Model
+# Fitting a Linear Regression Model
 
 We can use the 'simple_lm()' function to fit a simple
 linear regression model using our example dataset.
@@ -54,7 +54,7 @@ model<- simple_lm(x,y)
 model
 ```
 
-#Generating Predictions
+# Generating Predictions
 
 We use the 'predict.simple_lm()' function to generate predicted
 outcomes using our fitted linear regression model.
@@ -66,7 +66,7 @@ prediction_data<- data.frame( x =x,
 prediction_data
 ```
 
-#Summary
+# Summary
 
 The 'summary.simple_lm()' function provides additional information
 about the fitted regression model, including the estimated coefficients,
@@ -104,9 +104,9 @@ We can also compare the computational efficiency of the simple_lm() function
 with R's, built-in lm() function using bench::mark
 
 Here is how it's done 
-
+```{r}
 set.seed(123)
-
+n<-1000
 x_bench <- rnorm(n)
 y_bench <- 2 + 3 * x_bench + rnorm(n)
 
@@ -119,4 +119,4 @@ lm(y_bench ~ x_bench),
 iterations = 100,
 check = FALSE
 )
-
+```

@@ -14,7 +14,7 @@ summary.simple_lm(): This function provides summary statistics for the model suc
 
 You can install the development version of LinearRegression from [GitHub](https://github.com/) with:
 
-devtools::install_github("AlbertWilson801/LinearRegression")
+remotes::install_github("AlbertWilson801/LinearRegression-", build_vignettes = TRUE)
 
 
 ## Example
