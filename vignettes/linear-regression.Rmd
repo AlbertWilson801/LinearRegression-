@@ -18,15 +18,15 @@ knitr::opts_chunk$set(
 library(LinearRegression)
 ```
 
-#Introduction
+# Introduction
 
-The LinearRegression package provides funcions for fitting and summarizing
+The LinearRegression package provides functions for fitting and summarizing
 linear regression models. This package uses ordinary least squares (OLS)
 to estimate the coefficients, intercept, and the outcomes of a linear model.
 
 Included in this package are the following three main functions:
 simple_lm(): Fits a simple linear regression model
-predict,simple_lm(): Generates predictions using a fitted model
+predict.simple_lm(): Generates predictions using a fitted model
 summary.simple_lm(): Summarizes the statistics of a fitted model such as
 coefficients, the intercept, R-squared, adjusted R-squared, residuals, and degrees of freedom.
 
@@ -70,7 +70,7 @@ prediction_data
 
 The 'summary.simple_lm()' function provides additional information
 about the fitted regression model, including the estimated coefficients,
-residual standard error, R-squared, adjusted R-squatred and degrees of
+residual standard error, R-squared, adjusted R-squared and degrees of
 freedom
 
 ```{r}
@@ -81,7 +81,7 @@ model_summary
 
 #Comparing with R's Built-in Linear Regression Function
 
-We can comparing the results of our 'simple_lm()' function
+We can compare the results of our 'simple_lm()' function
 with R's built-in 'lm()' function to verify that both functions
 produce equivalent results. 
 
@@ -97,3 +97,26 @@ all.equal(
   unname(coef(linear_model)[2])
 )
 ```
+
+# Comparing Computational Efficiency
+
+We can also compare the computational efficiency of the simple_lm() function
+with R's, built-in lm() function using bench::mark
+
+Here is how it's done 
+
+set.seed(123)
+
+x_bench <- rnorm(n)
+y_bench <- 2 + 3 * x_bench + rnorm(n)
+
+#Compare execution times 
+
+bench::mark(
+
+simple_lm(x_bench, y_bench), 
+lm(y_bench ~ x_bench),
+iterations = 100,
+check = FALSE
+)
+

@@ -1,14 +1,17 @@
 Package: LinearRegression
-Title: What the Package Does (One Line, Title Case)
+Title: Simple Linear Regression Using Ordinary Least Squares
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Albert", "Wilson", , "albertwi@umich.edu", role = c("aut", "cre"))
+Description: Implements simple linear regression with the use of ordinary least squares>
+    Includes functions for fitting models, generating predictions and summarizing linear regression
+    results.
 License: MIT + file LICENSE
 Config/roxygen2/version: 8.0.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    bench
 VignetteBuilder: knitr
