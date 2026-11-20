@@ -10,8 +10,11 @@ The LinearRegression package provides functions for fitting, predicting and summ
 simple linear regression models using ordinary least squares (OLS). 
 
 The packages include the following main functions:
+
 simple_lm(): This function creates a simple linear regression model
+
 predict.simple_lm(): This function generates predictions using a fitted linear regression model
+
 summary.simple_lm(): This function provides summary statistics for the model such as coefficients, intercepts, R-squared, standard errors, degrees of freedom, etc. 
 
 
