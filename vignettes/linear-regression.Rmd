@@ -79,6 +79,37 @@ model_summary <- summary(model)
 model_summary
 ```
 
+#Simulating Different Data Sets
+
+set.seed(123)
+
+#Dataset 1: Strong Linear Relationship
+
+strong_x<- rnorm(50)
+dataset1<- data.frame(x = strong_x, y = 2 + 3 *strong_x + rnorm(50, sd =0.5)
+)
+
+#Dataset 2: Moderate Linear Relationship
+
+moderate_x<- rnorm(100)
+dataset2<- data.frame( x = moderate_x, y = 2 + 3* moderate_x + rnorm(100, sd = 3))
+
+
+#Dataset 3: Weak Linear Relationship
+
+weak_x<- rnorm(200)
+dataset3<- data.frame( x = weak_x, y = 2+3*weak_x + rnorm(200, sd = 8))
+
+strong_model<- simple_lm(dataset1$x, dataset1$y)
+moderate_model<- simple_lm(dataset2$x, dataset2$y)
+weak_model<- simple_lm(dataset3$x, dataset3$y)
+
+summary(strong_model)
+summary(moderate_model)
+summary(weak_model)
+
+
+
 #Comparing with R's Built-in Linear Regression Function
 
 We can compare the results of our 'simple_lm()' function

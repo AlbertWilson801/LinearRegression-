@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 # LinearRegression
 
@@ -28,12 +33,13 @@ model<- simple_lm(x, y)
 model
 
 
-#Predictions
+## Predictions
 predict(model, newdata = c(6, 7, 8))
 
 
-#Model Summary
+## Model Summary
 summary(model)
 
-#Author
+## Author
 Albert Wilson
+
